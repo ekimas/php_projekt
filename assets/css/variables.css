@@ -1,0 +1,10 @@
+:root {
+    --mobile-max-width: 765px;
+    --max-width: 1440px;
+
+    --light-grey: #D8D9D7;
+    --turquoise: #27708C;
+    --blue: #23648C;
+    --dark-blue: #141C26;
+    --dark: #261D01;
+}

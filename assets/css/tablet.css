@@ -1,0 +1,12 @@
+@import 'variables.css';
+
+@media (min-width: 768px) and (max-width: 1439px) {
+    .login-page-form {
+        border-radius: 15px;
+        width: 375px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        margin-top: 100px;
+    }
+}
