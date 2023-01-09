@@ -1,11 +1,17 @@
 <?php
+
+// start of a session
 session_start();
 
+// checks if user is logged in
 require('checkLogin.php');
+// requires OfferController
 require('OfferController.php');
 
+// creates instance of OfferController
 $offerController = new OfferController;
 
+// call OfferController's method
 $offers = $offerController->getAllOffers();
 
 ?>
@@ -25,28 +31,30 @@ $offers = $offerController->getAllOffers();
                     <span>Hello <?php echo $_SESSION["nick"] ?></span>
                 </div>
                 <div class="nav-button">
-                    <a href="./user.php">Konto</a>
+                    <a href="./user.php">Account</a>
                 </div>
                 <div class="nav-button">
-                    <a href="#">Oferty</a>
+                    <a href="#">Offers</a>
                 </div>
                 <div class="nav-button">
-                    <a href="./offerForm.php">Dodaj ofertę</a>
+                    <a href="./offerForm.php">Add an offer</a>
                 </div>
                 <div class="nav-button">
-                    <a href="login.php?redirect=logout.php">Wyloguj</a>
+                    <a href="login.php?redirect=logout.php">Logout</a>
                 </div>
             </nav>
             <div>
                 <table class="offers-table">
                     <?php
-                        foreach($offers as $offer) {
-                            echo '<tr>';
-                            if ($_SESSION["auth"] == 1) {
-                                echo '<td><a href="deleteOffer.php?offer=' . $offer['id'] . '">DELETE</a></td>';
-                            }
-                            echo '<td>'. $offer['creator'] .'</td><td class="offer-name">'. $offer["name"] .'</td><td>'. $offer["description"] .'</td><td class="offer-price">'. $offer["price"] .'</td></tr>';
+                    // foreach loop for displaying offers
+                    foreach ($offers as $offer) {
+                        echo '<tr>';
+                        // only admin can delete an offer
+                        if ($_SESSION["auth"] == 1) {
+                            echo '<td><a href="deleteOffer.php?offer=' . $offer['id'] . '">DELETE</a></td>';
                         }
+                        echo '<td>' . $offer['creator'] . '</td><td class="offer-name">' . $offer["name"] . '</td><td>' . $offer["description"] . '</td><td class="offer-price">' . $offer["price"] . '</td></tr>';
+                    }
                     ?>
                 </table>
             </div>

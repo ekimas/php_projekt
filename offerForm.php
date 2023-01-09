@@ -1,6 +1,12 @@
 <?php
-    session_start();
-    $userId = $_SESSION['userId']
+
+// start of session
+session_start();
+
+// checks if user is logged in
+require('checkLogin.php');
+
+$userId = $_SESSION['userId']
 ?>
 
 
@@ -19,16 +25,16 @@
                     <span>Hello <?php echo $_SESSION["nick"] ?></span>
                 </div>
                 <div class="nav-button">
-                    <a href="./user.php">Konto</a>
+                    <a href="./user.php">Account</a>
                 </div>
                 <div class="nav-button">
-                    <a href="./main.php">Oferty</a>
+                    <a href="./main.php">Offers</a>
                 </div>
                 <div class="nav-button">
-                    <a href="#">Dodaj ofertę</a>
+                    <a href="#">Add an offer</a>
                 </div>
                 <div class="nav-button">
-                    <a href="login.php?redirect=logout.php">Wyloguj</a>
+                    <a href="login.php?redirect=logout.php">Logout</a>
                 </div>
             </nav>
             <div class="offer-form">
